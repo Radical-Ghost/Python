@@ -23,16 +23,17 @@ def Kmean(string, no_clusters, max_iter = 100):
         centroid = new_centroid
     return clusters, centroid
 
-
 # Input
-with open("input.csv", "r") as file:
+with open("D:\Projects\Python\Academic\TE\DWM\input.csv", "r") as file:
     reader = csv.reader(file)
     string = [int(number) for row in reader for number in row]
 
 no_clusters = int(input("Enter no. of cluster: "))
 sorted(string)
 
-clusters , centroid = Kmean(string, no_clusters)
+clusters , centroids = Kmean(string, no_clusters)
 
-print("Clusters: ", sorted(clusters))
-print("Centroids: ", sorted(centroid))
+i = 1 
+for cluster, centroid in zip (sorted(clusters), sorted(centroids)):
+    print(f"Mean, Cluster {i} : {int(centroid)},\t{cluster}")
+    i += 1

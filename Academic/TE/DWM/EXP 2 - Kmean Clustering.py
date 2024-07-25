@@ -24,7 +24,7 @@ def Kmean(string, no_clusters, max_iter = 100):
     return clusters, centroid
 
 # Input
-with open("D:\Projects\Python\Academic\TE\DWM\input.csv", "r") as file:
+with open("D:\Projects\Python\Academic\TE\DWM\EXP 2 input.csv", "r") as file:
     reader = csv.reader(file)
     string = [int(number) for row in reader for number in row]
 

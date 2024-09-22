@@ -42,17 +42,15 @@ def generate_rules(frequent_item_sets, support_data, min_confidence):
 
         for subset_len in range(1, len(item_set)):
             for subset in combinations(item_set, subset_len):
-                subset = tuple(sorted(subset))  # Ensure subset is always sorted when accessed
+                subset = tuple(sorted(subset)) 
                 remaining = tuple(sorted(set(item_set) - set(subset)))
 
                 if remaining:
-                    # Calculate confidence
-                    union_itemset = tuple(sorted(item_set))  # Sort item_set to ensure consistent access
+                    union_itemset = tuple(sorted(item_set))
                     if subset in support_data and union_itemset in support_data:
                         confidence = support_data[union_itemset] / support_data[subset]
                         
                         if confidence >= min_confidence:
-                            # Store rule as (subset → remaining) with confidence
                             rules[(subset, remaining)] = confidence
 
     return rules
